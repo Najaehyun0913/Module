@@ -62,7 +62,7 @@
     conn_btn.addEventListener('click',function(){ // conn_btn 클릭 이벤트 추가
         //입력된 포트 가져오기
          const port = document.querySelector('.com_port').value;
-         axios.get(`/arduino/connection/${port}`)
+         axios.get(`/arduino/connection/${port}`) // 비동기처리 '/arduino/connection/${port}'에 GET 요청
         .then(response=>{
             console.log(response.status);
             if(response.status == 200)
@@ -105,30 +105,30 @@
     //----------------------------------------------------------------
     //1초마다 반복요청
     const req_led_info_func = ()=>{
-        axios.get('/arduino/message/led')
+        axios.get('/arduino/message/led') // led 요청 받아서
         .then(response=>{
-            led_info_el.innerHTML =  response.data;
+            led_info_el.innerHTML =  response.data; // led_info에 데이터 출력
         })
         .catch(error=>{});
     }
-    const req_tmp_info_func = ()=>{
+    const req_tmp_info_func = ()=>{ // tmp 요청 받아서
         axios.get('/arduino/message/tmp')
         .then(response=>{
-            tmp_info_el.innerHTML =  response.data;
+            tmp_info_el.innerHTML =  response.data; // tmp_info에 데이터 출력
         })
         .catch(error=>{});
     }
     const req_light_info_func = ()=>{
-        axios.get('/arduino/message/light')
+        axios.get('/arduino/message/light') // light요청 받아서
         .then(response=>{
-            light_info_el.innerHTML =  response.data;
+            light_info_el.innerHTML =  response.data; // light_info에 데이터 출력
         })
         .catch(error=>{});
     }
     const req_distance_info_func = ()=>{
-        axios.get('/arduino/message/distance')
+        axios.get('/arduino/message/distance') // distance요청 받아서
         .then(response=>{
-            distance_info_el.innerHTML =  response.data;
+            distance_info_el.innerHTML =  response.data; // distance에 출력
         })
         .catch(error=>{});
     }
